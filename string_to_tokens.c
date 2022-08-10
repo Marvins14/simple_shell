@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * nbr_spaces - return the number of string
+ * str_counter - return the number of string
  * using the number of space
  * @str: string to check
  * Return: int

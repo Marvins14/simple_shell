@@ -52,7 +52,7 @@ int main(int argc, char **argv)
 		if (execve(argv[1], argv, NULL) == -1)
 		{
 			perror("Error");
-			exit (-1);
+			exit(-1);
 		}
 		return (0);
 	}
