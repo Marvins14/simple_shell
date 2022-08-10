@@ -66,7 +66,7 @@ int main(int argc, char **argv)
 		if (isatty(fileno(stdin)))
 		{
 			is_pipe = 1;
-			_puts("cisfun#: ");
+			_puts("#cisfun$ ");
 		}
 
 		getline(&buffer, &bufsize, stdin);
