@@ -19,14 +19,6 @@ int execute(char **cmd)
 		perror("Error");
 		return (1);
 	}
-	else if (child_pid == 0)
-	{
-		if (execve(cmd[0], cmd, NULL) == -1)
-		{
-			perror("Error");
-			exit(-1);
-		}
-	}
 	else
 		wait(&status);
 	return (0);
@@ -43,10 +35,9 @@ int main(int argc, char **argv)
 	int response;
 	char **tokens;
 	size_t bufsize = BUFSIZ;
-	int is_pipe = 0;
 	char *buffer;
 
-	if (argc >= 2)
+	if (argc == 2)
 	{
 		/* handle cases where there's no arguments only the command */
 		if (execve(argv[1], argv, NULL) == -1)
@@ -57,23 +48,18 @@ int main(int argc, char **argv)
 		return (0);
 	}
 	buffer = (char *)malloc(bufsize * sizeof(char));
-	if (buffer == NULL)
+	if (!buffer)
 	{
 		perror("Unable to allocate buffer");
 		exit(1);
 	}
 	do {
-		if (isatty(fileno(stdin)))
-		{
-			is_pipe = 1;
-			_puts("#cisfun$ ");
-		}
-
+		_puts("#cisfun$ ");
 		getline(&buffer, &bufsize, stdin);
 		buffer[_strlen(buffer) - 1] = '\0';
 		tokens = string_to_tokens(buffer);
 		response = execute(tokens);
-	} while (is_pipe && response != -1);
+	} while (response != -1);
 
 	return (0);
 }
