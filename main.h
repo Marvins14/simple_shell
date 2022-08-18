@@ -12,7 +12,7 @@ int _strlen(const char *s);
 char *_strcpy(char *dest, const char *src);
 int _putchar(char c);
 void _puts(char *str);
-unsigned int token_counter(char *s);
+unsigned int nbr_spacres(char *s);
 char **string_to_tokens(char *str);
 
 #endif

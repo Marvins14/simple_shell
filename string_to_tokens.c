@@ -1,20 +1,20 @@
 #include "main.h"
 /**
- * str_counter - return the number of string
+ * nbr_spaces - return the number of string
  * using the number of space
  * @str: string to check
  * Return: int
  */
-unsigned int str_counter(char *str)
+unsigned int nbr_spaces(char *s)
 {
 	int i, cmpt = 0;
 
-	for (i = 0; str[i] != '\0'; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (str[i] == ' ')
+		if (s[i] == ' ')
 			cmpt++;
 	}
-	return (cmpt + 1);
+	return (cmpt);
 }
 
 
@@ -28,11 +28,11 @@ char **string_to_tokens(char *str)
 {
 	int i = 0;
 	const char separator[] = " ";
-	int nbr_string = str_counter(str);
-	char **tokens = malloc(sizeof(char *) * nbr_string);
+	int spaces = nbr_spaces(str);
+	char **tokens = malloc(sizeof(char *) * (spaces + 1))
 	char *token;
 
-	if (tokens == NULL)
+	if (!tokens)
 	{
 		fprintf(stderr, "sh: allocation error\n");
 		exit(1);
