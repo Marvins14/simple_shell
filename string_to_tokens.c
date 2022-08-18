@@ -2,7 +2,7 @@
 /**
  * nbr_spaces - return the number of string
  * using the number of space
- * @str: string to check
+ * @s: string to check
  * Return: int
  */
 unsigned int nbr_spaces(char *s)
